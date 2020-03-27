@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title> Carnival Game</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.4em;
+}
+
+body {
+  counter-reset: game;
+  text-align: center;
+  background: #e9b58b;
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+  color: #333;
+}
+
+input:checked {
+  counter-increment: game;
+}
+
+.total-count::after {
+  content: counter(game);
+}
+
+h2 {
+  font-size: 1em;
+  margin: -.5em auto 3em;
+  font-weight: 400;
+}
+
+.total-count {
+  font-size: 1.75em;
+  position: absolute;
+  top: 1.75em;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  z-index: 300;
+}
+
+.game-area {
+  display: -webkit-box;
+  display: flex;
+  flex-flow: wrap;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  max-width: 600px;
+  min-height: 550px;
+  max-height: 700px;
+  margin: 0 auto;
+  padding-left: 0;
+}
+
+li {
+  width: calc(33% - .5em);
+  margin-bottom: 1em;
+  height: 10em;
+  list-style: none;
+  position: relative;
+  outline: 4px solid white;
+  background: #64ddf3;
+}
+li:nth-child(1) input {
+  -webkit-filter: hue-rotate(6.7016860847deg) brightness(1.5492491086);
+          filter: hue-rotate(6.7016860847deg) brightness(1.5492491086);
+  -webkit-animation-duration: 1.2888930345s;
+          animation-duration: 1.2888930345s;
+}
+li:nth-child(2) input {
+  -webkit-filter: hue-rotate(61.4372077201deg) brightness(1.8958519516);
+          filter: hue-rotate(61.4372077201deg) brightness(1.8958519516);
+  -webkit-animation-duration: 3.2367969476s;
+          animation-duration: 3.2367969476s;
+}
+li:nth-child(3) input {
+  -webkit-filter: hue-rotate(253.0356397288deg) brightness(1.8985714215);
+          filter: hue-rotate(253.0356397288deg) brightness(1.8985714215);
+  -webkit-animation-duration: 0.5407639983s;
+          animation-duration: 0.5407639983s;
+}
+li:nth-child(4) input {
+  -webkit-filter: hue-rotate(15.6008674243deg) brightness(1.641266527);
+          filter: hue-rotate(15.6008674243deg) brightness(1.641266527);
+  -webkit-animation-duration: 2.1698995638s;
+          animation-duration: 2.1698995638s;
+}
+li:nth-child(5) input {
+  -webkit-filter: hue-rotate(318.5382980465deg) brightness(1.8852403402);
+          filter: hue-rotate(318.5382980465deg) brightness(1.8852403402);
+  -webkit-animation-duration: 1.1317037359s;
+          animation-duration: 1.1317037359s;
+}
+li:nth-child(6) input {
+  -webkit-filter: hue-rotate(165.1355830651deg) brightness(1.2880991232);
+          filter: hue-rotate(165.1355830651deg) brightness(1.2880991232);
+  -webkit-animation-duration: 1.4306249766s;
+          animation-duration: 1.4306249766s;
+}
+li:nth-child(7) input {
+  -webkit-filter: hue-rotate(30.1351969269deg) brightness(1.1260211344);
+          filter: hue-rotate(30.1351969269deg) brightness(1.1260211344);
+  -webkit-animation-duration: 0.1768459794s;
+          animation-duration: 0.1768459794s;
+}
+li:nth-child(8) input {
+  -webkit-filter: hue-rotate(266.8409818677deg) brightness(1.1463694036);
+          filter: hue-rotate(266.8409818677deg) brightness(1.1463694036);
+  -webkit-animation-duration: 2.1086062101s;
+          animation-duration: 2.1086062101s;
+}
+li:nth-child(9) input {
+  -webkit-filter: hue-rotate(332.6149534667deg) brightness(1.7147280097);
+          filter: hue-rotate(332.6149534667deg) brightness(1.7147280097);
+  -webkit-animation-duration: 2.1357438274s;
+          animation-duration: 2.1357438274s;
+}
+
+input[type="checkbox"] {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  cursor: crosshair;
+  background: radial-gradient(red 10%, white 10%, white 30%, red 30%, red 50%, white 50%, white 80%, red 80%, red 100%);
+  border-radius: 50%;
+  display: block;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 0 auto;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 6px solid red;
+  -webkit-animation: hide-target infinite alternate ease-in-out;
+          animation: hide-target infinite alternate ease-in-out;
+  z-index: 1;
+}
+input[type="checkbox"]:before {
+  content: '';
+  display: block;
+  background-color: black;
+  height: 50%;
+  width: 6px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  margin: 0 auto;
+  z-index: -1;
+}
+input[type="checkbox"]:focus {
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+input[type="checkbox"]:checked {
+  pointer-events: none;
+  -webkit-filter: grayscale(1) opacity(0.75);
+          filter: grayscale(1) opacity(0.75);
+  -webkit-animation: none;
+          animation: none;
+}
+input[type="checkbox"]:checked:after {
+  content: '+1!';
+  padding: .5em;
+  margin: 1em 0 0 1.5em;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.shield {
+  background: #724c20;
+  width: 100%;
+  height: 60%;
+  margin: 0 auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  pointer-events: all;
+  z-index: 100;
+}
+
+@-webkit-keyframes hide-target {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: 50%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes hide-target {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: 50%;
+  }
+  100% {
+    top: 0;
+  }
+}
+.game-over {
+  height: 100%;
+  width: 100%;
+  display: block;
+  background: white;
+  pointer-events: all;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 200;
+  -webkit-animation: appear .25s forwards;
+          animation: appear .25s forwards;
+  -webkit-animation-delay: 8s;
+          animation-delay: 8s;
+  background: repeating-linear-gradient(-45deg, #c9ff00 0, #c9ff00 5em, #20c0ff 5em, #20c0ff 10em);
+}
+.game-over h1 {
+  padding: 1em 0 3.5em;
+  background: white;
+}
+
+@-webkit-keyframes appear {
+  from {
+    top: -100vh;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    top: -100vh;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+.play-again {
+  background: white;
+  color: #20c0ff;
+  padding: .5em 1em;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+small a {
+  margin-bottom: 2em;
+  display: block;
+  color: #222;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<h1>CSS Only Carnival: Target Practice</h1>
+<h2>This game uses no JS at all (isn't CSS awesome?). You have 8 seconds to hit as many targets as you can!</h2>
+<div class="game-over">
+<h1>Game Over!</h1>
+<a class="play-again" target="_parent" href="https://codepen.io/una/full/NxZaNr">Play Again</a>
+</div>
+<ul class="game-area">
+<li><input type="checkbox"><div class="shield"></div></li>
+<li><input type="checkbox"><div class="shield"></div></li>
+<li><input type="checkbox"><div class="shield"></div></li>
+<li><input type="checkbox"><div class="shield"></div></li>
+<li><input type="checkbox"><div class="shield"></div></li>
+<li><input type="checkbox"><div class="shield"></div></li>
+<li><input type="checkbox"><div class="shield"></div></li>
+<li><input type="checkbox"><div class="shield"></div></li>
+<li><input type="checkbox"><div class="shield"></div></li>
+</ul>
+<h3 class="total-count">Targets Hit: &nbsp;</h3>
+<!-- <small><a href="https://twitter.com/<una</una>">Made with love by @una &hearts;</a></small> -->
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+<script id="rendered-js">
+// Look ma, NO JS! Or images... or even SVGs either :P
+//# sourceURL=pen.js
+    </script>
+</body>
+</html>
